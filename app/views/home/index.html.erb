@@ -1,0 +1,19 @@
+<h1>Segunda validación</h1>
+<br>
+<%= @pregunta.pregunta %>
+<%= form_tag home_index_path do %>
+  <div class="field">
+    <%= hidden_field_tag :pregunta, @pregunta.id %>
+    <br>
+    <%= text_field_tag :respuesta, params[:respuesta], :placeholder => "Ingrese su respuesta", :required => true %>
+  </div>
+  <div>
+    <%= link_to "Recargar pregunta", {:controller =>  "home", :action => "index"} %>
+  </div>
+  <br>
+  <div class="field">
+    <%= label_tag :fruta, "Escoja una fruta" %>
+    <%= select_tag :fruta, options_for_select([['Manzana'], ['Pera'], ['Naranja'], ['Uva'],  ['Limón']]) %>
+  </div>
+  <div class="actions"><%= submit_tag "Enviar", :class => "btn btn-info" %></div>
+<% end %>

@@ -1,0 +1,12 @@
+
+<%= form_tag sessions_path, :class => "form-signin" do %>
+    <h2 class="form-signin-heading">Inicia Sesión</h2>
+<div class ="span4">
+<div class="input_prepend">
+<span class="add-on"><i class="icon-user"></i></span>
+    <%= text_field_tag :username, params[:username], :placeholder => "Nombre de usuario", :class => "form-control", :required => true %>
+</div>
+</div>
+    <%= password_field_tag :password, nil,:placeholder => "Contraseña", :class => "form-control" %>
+    <%= submit_tag "Iniciar sesión", :class => "btn btn-lg btn-primary btn-block" %>
+<% end %>

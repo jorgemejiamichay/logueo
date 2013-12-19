@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Banco</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="user_nav">
+      <% if current_user %>
+        Has iniciado sesión como <%= current_user.username %>.
+        <%= link_to "Cerrar sesión", logout_path %>
+      <% else %>
+        <%= link_to "Crear cuenta", signup_path %> o
+        <%= link_to "Iniciar sesión", login_path %>.
+      <% end %>
+    </div>
+    <div class='main'>
+      <% flash.each do |key, msg| %>
+        <%= content_tag :div, :class => "alert #{key}" do %>
+          <%= link_to "x", "#", :class => "close", :data => {:dismiss => "alert"} %>
+          <%= msg %>
+        <% end -%>
+      <% end %>
+      <div class="container">
+      <%= yield %>
+      </div>
+    </div>
+
+</body>
+</html>
